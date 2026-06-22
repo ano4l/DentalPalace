@@ -261,98 +261,148 @@
       }
 
       .hero {
-        padding: 0;
-      }
-
-      .hero-media {
+        background: var(--surface);
+        padding: 54px clamp(18px, 3.4vw, 58px) 80px;
         position: relative;
-        min-height: calc(100svh - 78px);
         overflow: hidden;
-        border-radius: 0;
-        background: #dcd8d1;
       }
 
-      .hero-media img {
-        width: 100%;
-        height: max(640px, calc(100svh - 78px));
-        object-fit: cover;
-        object-position: 62% 22%;
-        filter: saturate(1.02) contrast(1.02);
-      }
-
-      .hero-media::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.18) 44%, rgba(0, 0, 0, 0.02) 78%),
-          linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 45%);
-        pointer-events: none;
-      }
-
-      .hero-copy {
-        position: absolute;
-        z-index: 2;
-        top: clamp(54px, 8vw, 86px);
-        left: clamp(28px, 7vw, 132px);
-        max-width: 620px;
-        color: var(--white);
-      }
-
-      .label-soft {
-        display: inline-flex;
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: clamp(32px, 5vw, 64px);
         align-items: center;
-        min-height: 25px;
-        padding: 6px 11px;
-        border: 1px solid rgba(255, 255, 255, 0.46);
-        border-radius: 999px;
-        color: rgba(255, 255, 255, 0.92);
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(10px);
-        font-size: 0.73rem;
-        font-weight: 800;
+        max-width: 1440px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 5;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin: 0;
+      .hero-copy-editorial {
+        color: var(--ink);
+        padding-right: 20px;
+        animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
       }
 
-      h1 {
-        margin-top: 22px;
+      .hero-copy-editorial h1 {
+        margin-top: 18px;
         font-family: var(--serif);
-        font-size: clamp(3.3rem, 8vw, 6.55rem);
+        font-size: clamp(3.2rem, 5.8vw, 4.8rem);
         font-weight: 500;
-        line-height: 0.95;
-        letter-spacing: -0.01em;
-        text-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        color: var(--ink);
       }
 
-      h1 em {
+      .hero-copy-editorial h1 em {
         font-style: italic;
-        background: var(--gold-grad);
+        background: var(--maroon-grad);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        color: var(--gold);
+        color: var(--maroon);
       }
 
-      .hero-actions {
+      .hero-desc-editorial {
+        margin-top: 20px;
+        font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+        line-height: 1.5;
+        color: var(--muted);
+        max-width: 520px;
+      }
+
+      .hero-actions-editorial {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 0;
+        gap: 16px;
         margin-top: 32px;
       }
 
-      .hero-actions .button {
-        border-color: transparent;
+      .hero-actions-editorial .button {
+        background: var(--maroon-grad);
+        color: var(--white);
+        box-shadow: 0 10px 24px rgba(76, 6, 37, 0.25);
+        font-weight: 800;
+        min-height: 52px;
+        padding: 14px 28px;
       }
 
-      .hero-actions .arrow {
-        margin-left: -8px;
+      .hero-actions-editorial .button:hover {
+        background: var(--gold-grad);
+        color: var(--maroon);
+        box-shadow: 0 10px 24px rgba(216, 174, 69, 0.25);
+      }
+
+      .hero-media-editorial {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: rise 1s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      /* Animated dashed circle behind arch */
+      .hero-frame-bg {
+        position: absolute;
+        width: calc(100% + 24px);
+        height: calc(100% + 24px);
+        border-radius: 200px 200px 32px 32px;
+        border: 1px dashed rgba(216, 174, 69, 0.45);
+        pointer-events: none;
+        animation: spin-slow 40s linear infinite;
+        z-index: 1;
+      }
+
+      /* Beautiful Portrait Arch Frame */
+      .hero-frame {
+        width: 100%;
+        max-width: 380px;
+        height: 520px;
+        border-radius: 190px 190px 24px 24px;
+        overflow: hidden;
+        border: 2px solid rgba(216, 174, 69, 0.6);
+        box-shadow: 0 24px 50px rgba(76, 6, 37, 0.15);
+        background: #faf8f5;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 12%;
+        filter: saturate(1.03) contrast(1.02);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: none !important; /* overrides previous fullscreen zoom animation */
+      }
+
+      .hero-frame:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Floats the Royal Seal beautifully overlapping the frame */
+      .hero-seal-floating {
+        position: absolute;
+        z-index: 4;
+        bottom: 24px;
+        left: -32px;
+        width: 108px;
+        height: 108px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9));
+        border: 1.5px solid rgba(216, 174, 69, 0.85);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        animation: float-soft 5s ease-in-out infinite;
+      }
+
+      .hero-seal-floating img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
       }
 
       .contact-orbit {
@@ -365,18 +415,22 @@
         display: grid;
         place-items: center;
         color: var(--white);
-        border: 1px solid rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(215, 174, 69, 0.5);
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(76, 6, 37, 0.85);
+        box-shadow: 0 10px 24px rgba(76, 6, 37, 0.3);
         backdrop-filter: blur(8px);
         font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
       }
 
       .contact-orbit::after {
         content: "";
         position: absolute;
         inset: 64px -1px -65px;
-        border: 1px solid rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(215, 174, 69, 0.5);
         border-radius: 0 0 70px 70px;
         border-top: 0;
       }
@@ -386,6 +440,7 @@
         bottom: -48px;
         width: 28px;
         height: 28px;
+        color: var(--gold);
       }
 
       .float-card {
@@ -668,39 +723,45 @@
 
       .profile-tile {
         color: var(--white);
-        background: #242037;
+        position: relative;
+        background: url('assets/images/WhatsApp%20Image%202026-06-20%20at%2013.38.17.jpeg') no-repeat;
+        background-size: cover;
+        background-position: center 22%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 32px 28px;
+        z-index: 1;
       }
 
-      .profile-tile .avatar {
-        width: 62px;
-        height: 62px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: var(--gold-grad);
-        color: var(--maroon);
-        font-weight: 900;
-        font-size: 1.15rem;
-        box-shadow: 0 8px 20px rgba(184, 134, 42, 0.25);
+      .profile-tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(36, 32, 55, 0) 0%, rgba(36, 32, 55, 0.25) 45%, rgba(22, 10, 24, 0.88) 100%);
+        z-index: -1;
+        pointer-events: none;
       }
 
       .profile-tile strong {
         display: block;
-        margin-top: 20px;
         font-family: var(--serif);
-        font-size: 1.35rem;
+        font-size: 1.45rem;
         font-weight: 500;
-        line-height: 1.1;
+        line-height: 1.15;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
       }
 
       .profile-tile span {
         display: block;
         margin-top: 6px;
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.85rem;
-        letter-spacing: 0.04em;
+        color: var(--gold-soft);
+        font-size: 0.82rem;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
         font-weight: 700;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
       }
 
       .info-grid {
@@ -1229,6 +1290,250 @@
         text-transform: uppercase;
       }
 
+      /* ==================== DIRECTORY SECTION ==================== */
+      .credentials-ribbon {
+        background: radial-gradient(circle at 1% 50%, #faf8f5, #f5f2ee);
+        border-top: 1px solid rgba(216, 174, 69, 0.22);
+        border-bottom: 1px solid rgba(216, 174, 69, 0.22);
+        padding: 24px clamp(18px, 3.4vw, 58px);
+        margin-top: 54px;
+      }
+
+      .ribbon-content {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .ribbon-badge {
+        background: var(--gold-grad);
+        color: var(--maroon);
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 6px 14px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .ribbon-text {
+        font-family: var(--serif);
+        font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+        font-weight: 500;
+        color: var(--maroon);
+        line-height: 1.4;
+      }
+
+      @media (max-width: 768px) {
+        .ribbon-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+
+      .directory-section {
+        padding: 64px clamp(18px, 3.4vw, 58px) 80px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .directory-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px, 6vw, 80px);
+      }
+
+      .directory-col {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .directory-title {
+        font-family: var(--serif);
+        font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+        font-weight: 500;
+        line-height: 1.15;
+        color: var(--maroon);
+        margin-bottom: 28px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--gold);
+        width: max-content;
+      }
+
+      .branch-row {
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(21, 18, 23, 0.08);
+      }
+
+      .branch-row:first-of-type {
+        padding-top: 0;
+      }
+
+      .branch-row:last-of-type {
+        border-bottom: none;
+      }
+
+      .branch-tag {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .branch-name {
+        font-family: var(--serif);
+        font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.25;
+      }
+
+      .branch-address {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+
+      .branch-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .branch-phone {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--maroon);
+        transition: color 0.3s;
+      }
+
+      .branch-phone:hover {
+        color: var(--gold-deep);
+      }
+
+      .branch-link {
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      .branch-link:hover {
+        color: var(--maroon);
+        transform: translateX(3px);
+      }
+
+      /* Direct Route Items: clean card-less rows with elegant hover fills */
+      .route-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .route-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 28px;
+        background: #fdfcfb;
+        border: 1px solid rgba(216, 174, 69, 0.15);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, background 0.35s, box-shadow 0.35s;
+      }
+
+      .route-item:hover {
+        transform: translateY(-3px);
+        background: var(--white);
+        border-color: var(--gold);
+        box-shadow: 0 12px 30px rgba(216, 174, 69, 0.08);
+      }
+
+      .route-item.route-emergency {
+        border-color: rgba(76, 6, 37, 0.25);
+        background: #fffbfd;
+      }
+
+      .route-item.route-emergency:hover {
+        background: var(--white);
+        border-color: var(--maroon);
+        box-shadow: 0 12px 30px rgba(76, 6, 37, 0.08);
+      }
+
+      .route-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .route-tag {
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      .tag-emerg {
+        color: var(--maroon-2);
+        font-weight: 900;
+      }
+
+      .route-main {
+        font-family: var(--serif);
+        font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .route-item.route-emergency .route-main {
+        color: var(--maroon);
+      }
+
+      .route-desc {
+        margin: 4px 0 0;
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .route-arrow {
+        font-size: 1.4rem;
+        color: var(--muted);
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .route-item:hover .route-arrow {
+        transform: translateX(4px);
+        color: var(--maroon);
+      }
+
+      @media (max-width: 980px) {
+        .directory-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .directory-title {
+          margin-bottom: 24px;
+        }
+      }
+
       @media (max-width: 980px) {
         .feature-band {
           grid-template-columns: 1fr;
@@ -1498,19 +1803,14 @@
 
         <main id="top">
           <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-media">
-              <img src="assets/images/WhatsApp%20Image%202026-06-20%20at%2013.38.18.jpeg" alt="Dr Makoma Nandi Khumalo, dentist at The Dental Palace" />
-
-              <span class="royal-seal" aria-hidden="true">
-                <img src="assets/images/logo-mark.png" alt="" />
-              </span>
-
-              <div class="hero-copy">
+            <div class="hero-grid">
+              <div class="hero-copy-editorial">
                 <span class="label-soft">premium dental care - pretoria</span>
                 <h1 id="hero-title">A smile fit<br />for <em>royals</em></h1>
-                <div class="hero-actions">
+                <p class="hero-desc-editorial">Experience exceptional, modern dental treatments in Hatfield and Pretoria Central under the direct care of Dr Makoma Nandi Khumalo.</p>
+                <div class="hero-actions-editorial">
                   <a class="button" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">Book on WhatsApp</a>
-                  <a class="arrow" href="#details" aria-label="Go to practice details">
+                  <a class="arrow arrow-light" href="#details" aria-label="Go to practice details">
                     <svg viewBox="0 0 24 24" fill="none">
                       <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
@@ -1518,22 +1818,23 @@
                 </div>
               </div>
 
-              <a class="contact-orbit" href="#contact">
-                Contact
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 4v16M6.5 13.5 12 20l5.5-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-
-              <article class="float-card">
-                <a class="arrow arrow-light" href="#locations" aria-label="View clinic locations">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
-                <p>Modern dental care in Hatfield and Pretoria Central.</p>
-              </article>
+              <div class="hero-media-editorial">
+                <div class="hero-frame-bg"></div>
+                <div class="hero-frame">
+                  <img src="assets/images/WhatsApp%20Image%202026-06-20%20at%2013.38.18.jpeg" alt="Dr Makoma Nandi Khumalo, Dentist" />
+                </div>
+                <span class="hero-seal-floating" aria-hidden="true">
+                  <img src="assets/images/logo-mark.png" alt="" />
+                </span>
+              </div>
             </div>
+
+            <a class="contact-orbit" href="#contact">
+              Contact
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4v16M6.5 13.5 12 20l5.5-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
           </section>
 
           <section class="content" id="details" aria-labelledby="details-title">
@@ -1588,7 +1889,6 @@
           <section class="panel-section" aria-labelledby="about-title">
             <div class="bento reveal">
               <article class="tile profile-tile pad">
-                <div class="avatar">DK</div>
                 <div>
                   <strong>Dr Makoma Nandi Khumalo</strong>
                   <span>Dentist &amp; Founder</span>
@@ -1620,104 +1920,80 @@
               </div>
             </div>
 
-            <div class="info-grid reveal">
-              <!-- Credentials (6/6 columns) -->
-              <article class="info-card card-credential">
-                <div>
-                  <span class="card-top-tag tag-gold">Board Certified</span>
-                  <h3>Dip Oral Hygiene UL, Bachelor Dental Therapy UL and BDS SMUPR</h3>
-                  <p>Registered Dental Practitioner &bull; HPCSA Registration</p>
-                  <p>Practice Number: 1108786</p>
-                </div>
-                <div class="card-action-row">
-                  <span>Professional Credentials</span>
-                  <span class="pill pill-gold">Verified</span>
-                </div>
-              </article>
+            <!-- Credentials Ribbon (Replaces old Wide boxy panels) -->
+            <div class="credentials-ribbon reveal">
+              <div class="ribbon-content">
+                <span class="ribbon-badge">Board Certified</span>
+                <p class="ribbon-text">Dip Oral Hygiene UL, Bachelor Dental Therapy UL and BDS SMUPR &mdash; Registered Specialist Dental Therapist &bull; Practice Number: 1108786</p>
+              </div>
+            </div>
 
-              <!-- Locations (3/6 columns each) -->
-              <article class="info-card card-location" id="locations">
-                <div>
-                  <span class="card-top-tag tag-maroon">Hatfield Branch</span>
-                  <h3>IMED Medical, Dental &amp; Optometrist</h3>
-                  <address>1066 Burnett St, The Fields Hatfield, 0083</address>
-                  <p>Hatfield, Pretoria</p>
-                </div>
-                <div class="card-action-row">
-                  <a href="tel:+27123426304" style="color: var(--maroon); font-weight: 700;">012 342 6304</a>
-                  <a class="arrow arrow-light" href="https://www.google.com/maps/search/?api=1&query=1066%20Burnett%20St%20The%20Fields%20Hatfield%200083" target="_blank" rel="noreferrer" aria-label="Open Hatfield map">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
+            <!-- Locations & Contacts Editorial Directory (Replaces old Boxy AI panels) -->
+            <div class="directory-section reveal" id="locations">
+              <div class="directory-grid">
+                <!-- Branches Column -->
+                <div class="directory-col">
+                  <h2 class="directory-title">Our Branches</h2>
+                  
+                  <div class="branch-row">
+                    <span class="branch-tag">Hatfield Branch</span>
+                    <h3 class="branch-name">IMED Medical, Dental &amp; Optometrist</h3>
+                    <p class="branch-address">1066 Burnett St, The Fields Hatfield, 0083</p>
+                    <div class="branch-meta">
+                      <a class="branch-phone" href="tel:+27123426304">012 342 6304</a>
+                      <a class="branch-link" href="https://www.google.com/maps/search/?api=1&query=1066%20Burnett%20St%20The%20Fields%20Hatfield%200083" target="_blank" rel="noreferrer">
+                        Directions &rarr;
+                      </a>
+                    </div>
+                  </div>
 
-              <article class="info-card card-location">
-                <div>
-                  <span class="card-top-tag tag-maroon">Pretoria Central Branch</span>
-                  <h3>Prinsstruben Medical Center</h3>
-                  <address>Shop 1 Prinsstruben, Corner Prinsloo &amp; Struben, Pretoria Central, 0001</address>
-                  <p>Pretoria CBD</p>
+                  <div class="branch-row">
+                    <span class="branch-tag">Pretoria Central Branch</span>
+                    <h3 class="branch-name">Prinsstruben Medical Center</h3>
+                    <p class="branch-address">Shop 1 Prinsstruben, Corner Prinsloo &amp; Struben, Pretoria Central, 0001</p>
+                    <div class="branch-meta">
+                      <a class="branch-phone" href="tel:+27123233407">012 323 3407</a>
+                      <a class="branch-link" href="https://www.google.com/maps/search/?api=1&query=Prinsstruben%20Medical%20Center%20Corner%20Prinsloo%20and%20Struben%20Pretoria%20Central%200001" target="_blank" rel="noreferrer">
+                        Directions &rarr;
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-action-row">
-                  <a href="tel:+27123233407" style="color: var(--maroon); font-weight: 700;">012 323 3407</a>
-                  <a class="arrow arrow-light" href="https://www.google.com/maps/search/?api=1&query=Prinsstruben%20Medical%20Center%20Corner%20Prinsloo%20and%20Struben%20Pretoria%20Central%200001" target="_blank" rel="noreferrer" aria-label="Open Pretoria Central map">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
 
-              <!-- Contacts (2/6 columns each) -->
-              <article class="info-card card-contact">
-                <div>
-                  <span class="card-top-tag tag-muted">Email Route</span>
-                  <h3>Email the practice</h3>
-                  <p>Send enquiries directly to our inbox for quick medical assistance.</p>
-                </div>
-                <div class="card-action-row">
-                  <a href="mailto:drnandi.dentalpalace@gmail.com" style="font-size: 0.82rem; font-weight: 700; word-break: break-all;">drnandi.dentalpalace@gmail.com</a>
-                  <a class="arrow arrow-light" href="mailto:drnandi.dentalpalace@gmail.com" aria-label="Email the practice">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
+                <!-- Contact Routes Column -->
+                <div class="directory-col">
+                  <h2 class="directory-title">Direct Routes</h2>
+                  
+                  <div class="route-list">
+                    <a class="route-item" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                      <div class="route-info">
+                        <span class="route-tag">WhatsApp booking</span>
+                        <span class="route-main">064 507 7048</span>
+                        <p class="route-desc">Quick digital booking and direct consulting.</p>
+                      </div>
+                      <span class="route-arrow">&rarr;</span>
+                    </a>
 
-              <article class="info-card card-contact">
-                <div>
-                  <span class="card-top-tag tag-muted">WhatsApp Route</span>
-                  <h3>WhatsApp booking</h3>
-                  <p>Quick chat bookings, digital enquiries and direct consulting.</p>
-                </div>
-                <div class="card-action-row">
-                  <a href="https://wa.me/27645077048" target="_blank" rel="noreferrer" style="color: #25d366; font-weight: 700;">064 507 7048</a>
-                  <a class="arrow arrow-light" href="https://wa.me/27645077048" target="_blank" rel="noreferrer" aria-label="WhatsApp booking">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
+                    <a class="route-item" href="mailto:drnandi.dentalpalace@gmail.com">
+                      <div class="route-info">
+                        <span class="route-tag">Email Enquiries</span>
+                        <span class="route-main">drnandi.dentalpalace@gmail.com</span>
+                        <p class="route-desc">Send medical records or custom enquiries direct to our inbox.</p>
+                      </div>
+                      <span class="route-arrow">&rarr;</span>
+                    </a>
 
-              <article class="info-card card-contact" style="border-color: rgba(76, 6, 37, 0.25);">
-                <div>
-                  <span class="card-top-tag tag-green">24/7 Active</span>
-                  <h3>Emergency line</h3>
-                  <p>Urgent trauma, severe dental pain, or immediate post-surgical care.</p>
+                    <a class="route-item route-emergency" href="tel:+27760599556">
+                      <div class="route-info">
+                        <span class="route-tag tag-emerg">24/7 Active Urgent Emergency</span>
+                        <span class="route-main">076 059 9556</span>
+                        <p class="route-desc">Immediate medical attention for trauma or acute dental pain.</p>
+                      </div>
+                      <span class="route-arrow">&rarr;</span>
+                    </a>
+                  </div>
                 </div>
-                <div class="card-action-row">
-                  <a href="tel:+27760599556" style="color: var(--maroon); font-weight: 900;">076 059 9556</a>
-                  <a class="arrow arrow-light" href="tel:+27760599556" aria-label="Call emergency number">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
+              </div>
             </div>
 
             <div class="contact-strip reveal" id="contact">
