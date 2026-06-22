@@ -568,6 +568,182 @@
         transform: scale(1.04);
       }
 
+      /* ==================== CLINICAL SERVICES SECTION ==================== */
+      .services-section {
+        padding: 92px clamp(18px, 3.4vw, 58px) 92px;
+        background: radial-gradient(circle at 100% 100%, #faf8f5, var(--surface));
+        border-top: 1px solid rgba(21, 18, 23, 0.05);
+        border-bottom: 1px solid rgba(21, 18, 23, 0.05);
+      }
+
+      .services-container {
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .services-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 54px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .services-header h2 {
+        font-family: var(--serif);
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        font-weight: 500;
+        line-height: 1.1;
+        color: var(--ink);
+      }
+
+      .services-header h2 em {
+        font-style: italic;
+        background: var(--maroon-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: var(--maroon);
+      }
+
+      .services-header p {
+        margin-top: 16px;
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* Category Tab Filters */
+      .services-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 44px;
+      }
+
+      .tab-btn {
+        background: #faf8f5;
+        border: 1px solid rgba(21, 18, 23, 0.08);
+        padding: 12px 24px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .tab-btn:hover {
+        border-color: var(--maroon);
+        color: var(--maroon);
+        transform: translateY(-1px);
+      }
+
+      .tab-btn.active {
+        background: var(--maroon-grad);
+        color: var(--white);
+        border-color: transparent;
+        box-shadow: 0 10px 24px rgba(76, 6, 37, 0.2);
+      }
+
+      /* Services Grid and Cards */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+        transition: opacity 0.3s;
+      }
+
+      .service-card {
+        background: var(--white);
+        border: 1px solid rgba(216, 174, 69, 0.15);
+        border-radius: var(--radius-md);
+        padding: 34px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-height: 290px;
+        box-shadow: 0 10px 30px rgba(22, 10, 24, 0.02);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--gold);
+        box-shadow: 0 16px 40px rgba(216, 174, 69, 0.09);
+      }
+
+      /* Card Content styling */
+      .service-icon {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fffcf8;
+        border: 1.5px solid rgba(216, 174, 69, 0.4);
+        color: var(--maroon);
+        box-shadow: 0 6px 14px rgba(216, 174, 69, 0.1);
+        margin-bottom: 24px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .service-card:hover .service-icon {
+        transform: scale(1.08) rotate(5deg);
+        background: var(--maroon-grad);
+        color: var(--white);
+        border-color: transparent;
+      }
+
+      .service-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.8;
+      }
+
+      .service-info h3 {
+        font-family: var(--serif);
+        font-size: clamp(1.25rem, 1.8vw, 1.48rem);
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1.25;
+      }
+
+      .service-info p {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .service-link {
+        margin-top: 24px;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.3s, transform 0.3s;
+        text-decoration: none;
+      }
+
+      .service-link:hover {
+        color: var(--maroon);
+        transform: translateX(4px);
+      }
+
+      .service-card.hidden {
+        display: none;
+      }
+
       .panel-section {
         padding: 40px clamp(18px, 3.4vw, 58px) 28px;
       }
@@ -1792,6 +1968,233 @@
             </div>
           </section>
 
+          <section class="services-section" id="services" aria-labelledby="services-title">
+            <div class="services-container">
+              <div class="services-header reveal">
+                <span class="pill pill-dark">our expertise</span>
+                <h2 id="services-title">Clinical services fit for <em>royals</em></h2>
+                <p>Explore our comprehensive dental treatments. Filter by department to find the exact care you need under the HPCSA-certified guidance of Dr Makoma Nandi Khumalo.</p>
+              </div>
+
+              <!-- Interactive Category Tabs -->
+              <div class="services-tabs reveal" role="tablist">
+                <button class="tab-btn active" role="tab" aria-selected="true" data-filter="all">All Treatments</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-filter="preventive">Preventive &amp; Pediatric</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-filter="restorative">Restorative &amp; Therapy</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-filter="cosmetic">Cosmetic &amp; Special</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-filter="ortho">Orthodontics &amp; Prosthetics</button>
+              </div>
+
+              <!-- Services Grid -->
+              <div class="services-grid reveal">
+                
+                <!-- Preventive & General -->
+                <article class="service-card" data-category="preventive">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Sparkles/Hygiene SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Scaling and Polishing (Cleaning)</h3>
+                      <p>Gentle, thorough professional prophylaxis to eliminate stubborn plaque, tartar, and surface stains for pristine gums and fresh breath.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="preventive">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Education/Academic SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Oral Health Education</h3>
+                      <p>Empowering children and adults with customized brushing techniques, nutritional counseling, and oral hygiene guidelines for lifetime tooth preservation.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="preventive">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Teddy Bear/Heart SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Treatment of Small Children in Theater</h3>
+                      <p>Compassionate, stress-free pediatric dental rehabilitation performed safely under light general anesthesia or sedation in a controlled clinic theater environment.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <!-- Restorative -->
+                <article class="service-card" data-category="restorative">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Shield/Restoration SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Restoration (Fillings)</h3>
+                      <p>Premium, tooth-colored composite restorations to invisibly rebuild cavities, repair fractures, and seal enamel surfaces with perfect aesthetic results.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="restorative">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Roots/Therapy SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Root Canal (Endodontic) Treatment</h3>
+                      <p>Pain-free therapy of the inner tooth chamber, safely treating infected or inflamed nerves to rescue your natural tooth from extraction.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="restorative">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Surgical/Scissors/Extraction SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243zM9.121 9.121a3 3 0 114.243 4.242 3 3 0 01-4.243-4.242z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Extraction (All or Singular Removal)</h3>
+                      <p>Surgical or simple extraction of severely broken, infected, or wisdom teeth, prioritized with highly conservative, gentle techniques to minimize discomfort.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <!-- Cosmetic -->
+                <article class="service-card" data-category="cosmetic">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Shine/Sparkle SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Teeth Whitening</h3>
+                      <p>Premium clinic and professional take-home bleaching treatments to reverse dark aging, tea, or coffee stains and unveil a brilliant radiant smile.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="cosmetic">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Gold crown SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Gold Teeth</h3>
+                      <p>Custom precious metal placements and elegant, high-end dental gold applications, crafted with dental precision to suit your personal aesthetic expression.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="cosmetic">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Scale/Lines/Slimming SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Wires for Slimming Purposes</h3>
+                      <p>Specialized, temporary orthodontic maxillo-mandibular wire alignments, safe and hygienically applied to support structured portion-control dietary plans.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <!-- Ortho -->
+                <article class="service-card" data-category="ortho">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Grid/Brackets SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16M4 12h16" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Orthodontic Treatment (Braces)</h3>
+                      <p>Metal or clear orthodontic brackets and alignments, designed to address crowded teeth, correct overlapping bites, and shape beautiful tooth alignments.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+                <article class="service-card" data-category="ortho">
+                  <div>
+                    <div class="service-icon" aria-hidden="true">
+                      <!-- Crown SVG -->
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <h3>Crowns, Bridges &amp; Veneers</h3>
+                      <p>Custom-crafted porcelain crowns, gaps-replacing bridges, and porcelain veneers to restore decayed teeth, reinforce structure, and craft Hollywood-style smile makeovers.</p>
+                    </div>
+                  </div>
+                  <a class="service-link" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">
+                    Inquire Treatment &rarr;
+                  </a>
+                </article>
+
+              </div>
+            </div>
+          </section>
+
           <section class="panel-section" aria-labelledby="about-title">
             <div class="bento reveal">
               <article class="tile profile-tile pad">
@@ -1932,23 +2335,60 @@
     </div>
     <script>
       (function () {
+        // Reveal on scroll logic
         var els = document.querySelectorAll(".reveal");
         if (!("IntersectionObserver" in window)) {
           els.forEach(function (el) { el.classList.add("in"); });
-          return;
+        } else {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+          );
+          els.forEach(function (el) { io.observe(el); });
         }
-        var io = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("in");
-                io.unobserve(entry.target);
-              }
+
+        // Clinical Services interactive filter logic
+        var tabButtons = document.querySelectorAll(".tab-btn");
+        var serviceCards = document.querySelectorAll(".service-card");
+        var grid = document.querySelector(".services-grid");
+
+        tabButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            // Remove active state from current tab & apply to clicked tab
+            tabButtons.forEach(function (btn) {
+              btn.classList.remove("active");
+              btn.setAttribute("aria-selected", "false");
             });
-          },
-          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
-        );
-        els.forEach(function (el) { io.observe(el); });
+            button.classList.add("active");
+            button.setAttribute("aria-selected", "true");
+
+            var filterValue = button.getAttribute("data-filter");
+
+            // Smooth fade transition
+            grid.style.opacity = 0;
+
+            setTimeout(function () {
+              serviceCards.forEach(function (card) {
+                var category = card.getAttribute("data-category");
+                if (filterValue === "all" || category === filterValue) {
+                  card.classList.remove("hidden");
+                } else {
+                  card.classList.add("hidden");
+                }
+              });
+              
+              // Fade back in smoothly
+              grid.style.opacity = 1;
+            }, 250);
+          });
+        });
       })();
     </script>
   </body>
