@@ -6,7 +6,7 @@
     <title>The Dental Palace | A Smile Fit For Royals</title>
     <meta
       name="description"
-      content="The Dental Palace by Dr Makoma Nandi Khumalo. Dental care in Hatfield and Pretoria Central."
+      content="The Dental Palace by Dr Makoma Nandi Khumalo. Premium clinical dental care in Hatfield, Pretoria."
     />
     <link rel="icon" type="image/png" href="assets/images/logo-mark.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -836,7 +836,9 @@
       .profile-tile {
         color: var(--white);
         position: relative;
-        background-image: url('assets/images/WhatsApp%20Image%202026-06-20%20at%2013.38.18.jpeg');
+        background-image: 
+          radial-gradient(120% 90% at 80% 0%, rgba(125, 22, 72, 0.45), transparent 60%),
+          url('assets/images/WhatsApp%20Image%202026-06-20%20at%2013.38.18.jpeg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center 10%;
@@ -846,6 +848,62 @@
         align-items: flex-start;
         padding: 32px 28px;
         z-index: 1;
+      }
+
+      .profile-socials {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 5;
+      }
+
+      .social-badge {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        text-decoration: none;
+      }
+
+      .social-badge:hover {
+        background: var(--white);
+        color: var(--maroon);
+        border-color: transparent;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      .social-badge svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Social link button in header/footer */
+      .social-link-icon {
+        color: var(--muted);
+        transition: color 0.3s, transform 0.3s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .social-link-icon:hover {
+        color: var(--maroon);
+        transform: scale(1.1);
+      }
+
+      .social-link-icon svg {
+        width: 20px;
+        height: 20px;
       }
 
       .profile-tile::after {
@@ -1304,11 +1362,6 @@
         -webkit-text-fill-color: transparent;
       }
 
-      .profile-tile {
-        background:
-          radial-gradient(120% 90% at 80% 0%, rgba(125, 22, 72, 0.55), transparent 60%),
-          #221c2f;
-      }
 
       /* Branded feature band */
       .feature-band {
@@ -1880,9 +1933,21 @@
 
           <div class="top-actions">
             <span class="pill">EN</span>
-            <span class="pill">IN</span>
+            <!-- Social Links in Header -->
+            <a href="https://www.tiktok.com/@drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-link-icon" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-link-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
             <a class="icon-btn" href="#locations" aria-label="View locations">
-              <span class="badge-dot">2</span>
+              <span class="badge-dot">1</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
                 <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="currentColor" stroke-width="1.8" />
@@ -1934,7 +1999,7 @@
                     <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </a>
-                <p>Modern dental care in Hatfield and Pretoria Central.</p>
+                <p>Modern clinical dental care in Hatfield, Pretoria.</p>
               </article>
             </div>
           </section>
@@ -1946,7 +2011,7 @@
                 <span class="pill pill-dark">our values</span>
                 <h2 id="details-title">Every smile is <em>unique</em></h2>
                 <p class="details-desc">
-                  At The Dental Palace, we believe that premium dental care should be simple to access, calm, and tailored to you. In our tranquil, modern practices across Hatfield and Pretoria Central, Dr Makoma Nandi Khumalo and our clinical team provide world-class dental hygiene, cosmetic restoration, and advanced surgical care.
+                  At The Dental Palace, we believe that premium dental care should be simple to access, calm, and tailored to you. In our tranquil, modern practice in Hatfield, Pretoria, Dr Makoma Nandi Khumalo and our clinical team provide world-class dental hygiene, cosmetic restoration, and advanced surgical care.
                 </p>
                 
                 <div class="details-metrics">
@@ -1955,8 +2020,8 @@
                     <div class="metric-label">Patient Google Rating</div>
                   </div>
                   <div class="metric-item">
-                    <div class="metric-num">2</div>
-                    <div class="metric-label">Modern Pretoria Branches</div>
+                    <div class="metric-num">1</div>
+                    <div class="metric-label">Premier Hatfield Clinic</div>
                   </div>
                 </div>
               </div>
@@ -2198,6 +2263,20 @@
           <section class="panel-section" aria-labelledby="about-title">
             <div class="bento reveal">
               <article class="tile profile-tile pad">
+                <div class="profile-socials">
+                  <a href="https://www.tiktok.com/@drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-badge" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-badge" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </a>
+                </div>
                 <div>
                   <strong>Dr Makoma Nandi Khumalo</strong>
                   <span>Dentist &amp; Founder</span>
@@ -2221,7 +2300,7 @@
                 <img class="seal-inline" src="assets/images/logo-mark.png" alt="Crowned tooth logo" />
                 <span class="feature-tag">our promise</span>
                 <h3>A smile fit<br />for <em>royals</em></h3>
-                <p>From routine hygiene to surgical care, every patient is treated like royalty in calm, modern rooms across Hatfield and Pretoria Central.</p>
+                <p>From routine hygiene to surgical care, every patient is treated like royalty in our calm, modern clinic in Hatfield, Pretoria.</p>
                 <a class="button" href="https://wa.me/27645077048" target="_blank" rel="noreferrer">Book your visit</a>
               </div>
               <div class="feature-photo">
@@ -2242,7 +2321,7 @@
               <div class="directory-grid">
                 <!-- Branches Column -->
                 <div class="directory-col">
-                  <h2 class="directory-title">Our Branches</h2>
+                  <h2 class="directory-title">Our Location</h2>
                   
                   <div class="branch-row">
                     <span class="branch-tag">Hatfield Branch</span>
@@ -2251,18 +2330,6 @@
                     <div class="branch-meta">
                       <a class="branch-phone" href="tel:+27123426304">012 342 6304</a>
                       <a class="branch-link" href="https://www.google.com/maps/search/?api=1&query=1066%20Burnett%20St%20The%20Fields%20Hatfield%200083" target="_blank" rel="noreferrer">
-                        Directions &rarr;
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="branch-row">
-                    <span class="branch-tag">Pretoria Central Branch</span>
-                    <h3 class="branch-name">Prinsstruben Medical Center</h3>
-                    <p class="branch-address">Shop 1 Prinsstruben, Corner Prinsloo &amp; Struben, Pretoria Central, 0001</p>
-                    <div class="branch-meta">
-                      <a class="branch-phone" href="tel:+27123233407">012 323 3407</a>
-                      <a class="branch-link" href="https://www.google.com/maps/search/?api=1&query=Prinsstruben%20Medical%20Center%20Corner%20Prinsloo%20and%20Struben%20Pretoria%20Central%200001" target="_blank" rel="noreferrer">
                         Directions &rarr;
                       </a>
                     </div>
@@ -2315,6 +2382,23 @@
                   </svg>
                 </span>
               </a>
+              
+              <!-- Footer Social Links -->
+              <div style="display: flex; gap: 16px; margin: 24px 0 32px; justify-content: center; align-items: center;">
+                <a href="https://www.tiktok.com/@drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-badge" aria-label="TikTok" style="width: 44px; height: 44px; background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.15);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/drnandi_dentalpalace" target="_blank" rel="noreferrer" class="social-badge" aria-label="Instagram" style="width: 44px; height: 44px; background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.15);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+
               <nav class="micro-nav" aria-label="Footer navigation">
                 <a href="#top">Home</a>
                 <a href="#details">Service</a>
